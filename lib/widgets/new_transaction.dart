@@ -22,15 +22,22 @@ import 'package:flutter/services.dart';
 //   }
 // }
 
-class NewTransaction extends StatelessWidget {
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+class NewTransaction extends StatefulWidget {
   final Function addTx;
 
-  NewTransaction({
+  const NewTransaction({
     Key? key,
     required this.addTx,
   }) : super(key: key);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
     final enteredText = titleController.text;
@@ -40,10 +47,12 @@ class NewTransaction extends StatelessWidget {
       return;
     }
 
-    addTx(
+    widget.addTx(
       enteredText,
       enteredAmount,
     );
+
+    Navigator.of(context).pop();
   }
 
   @override
@@ -65,7 +74,7 @@ class NewTransaction extends StatelessWidget {
               keyboardType:
                   const TextInputType.numberWithOptions(decimal: true),
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
+                FilteringTextInputFormatter.allow(RegExp(r'[0-9.]')),
                 TextInputFormatter.withFunction((oldValue, newValue) {
                   try {
                     final text = newValue.text;
