@@ -10,7 +10,7 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var phCurrency = NumberFormat.currency(locale: 'en_US', symbol: '₱');
+    final phCurrency = NumberFormat.currency(locale: 'en_US', symbol: '₱');
 
     return SizedBox(
       height: 300,
