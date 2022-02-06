@@ -19,7 +19,16 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final ThemeData theme = ThemeData(primarySwatch: Colors.purple);
+  final ThemeData theme = ThemeData(
+      primarySwatch: Colors.purple,
+      fontFamily: 'Quicksand',
+      textTheme: ThemeData.light().textTheme.copyWith(
+          headline6: const TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 18,
+              fontWeight: FontWeight.bold)),
+      appBarTheme: const AppBarTheme(
+          titleTextStyle: TextStyle(fontFamily: 'OpenSans', fontSize: 20)));
 
   // This widget is the root of your application.
   @override
