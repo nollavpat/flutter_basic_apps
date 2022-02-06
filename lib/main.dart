@@ -13,19 +13,21 @@ void main() {
     // setWindowMinSize(const Size(378.95, 800));
     // setWindowMaxSize(const Size(378.95, 800));
   }
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final ThemeData theme = ThemeData(primarySwatch: Colors.purple);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: theme.copyWith(
+        colorScheme: theme.colorScheme.copyWith(secondary: Colors.amber),
       ),
       home: const MyHomePage(title: 'Personal Expense'),
       debugShowCheckedModeBanner: false,
